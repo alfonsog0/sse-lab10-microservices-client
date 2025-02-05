@@ -27,24 +27,7 @@ def test_api():
         return response.json()  # Returns the API's response
     except requests.exceptions.RequestException as e:
         return f"API Error: {e}", 500
-'''
-@app.route("/filter-books")
-def filter_books():
-    author = request.args.get("author", "").lower()  # Get genre from query string
-    try:
-        # Fetch all books from the first service
-        response = requests.get(API_URL)
-        response.raise_for_status()
-        books = response.json()["books"]
-        
-        # Filter books by genre (assuming genre is in the book data)
-        filtered_books = [b for b in books if author in b.get("author", "").lower()]
-        
-        # Render results.html with filtered books
-        return render_template("results.html", books=filtered_books)
-    except requests.exceptions.RequestException as e:
-        return f"An error occurred: {e}", 500
-'''
+
 @app.route("/filter-books")
 def filter_books():
     # Get the author search parameter from the query string
